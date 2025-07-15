@@ -1,38 +1,44 @@
+
+import 'dotenv/config';   // carrega o .env
 import express from 'express';
 import routes from './routes';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
 class App {
-    constructor() {
-        this.server = express();
+  constructor() {
+    this.server = express();
 
-        this.database();
-        this.middlewares();
-        this.routes();
+    this.database();
+    this.middlewares();
+    this.routes();
+  }
+
+  database() {
+    const uri = process.env.MONGODB_URI; 
+    if (!uri) {
+      console.error('❌ Variável MONGODB_URI não definida!');
+      process.exit(1);
     }
 
-    database() {
-        mongoose.connect('mongodb://127.0.0.1:27017/maria-gcma', {
-            // Opções deprecated removidas
-            serverSelectionTimeoutMS: 5000, // Tempo de espera de 5 segundos para seleção do servidor
-        })
-        .then(() => {
-            console.log('Conectado ao MongoDB');
-        })
-        .catch((error) => {
-            console.error('Erro ao conectar ao MongoDB:', error.message);
-        });
-    }
+    mongoose
+      .connect(uri, {
+        serverSelectionTimeoutMS: 5000,
+      })
+      .then(() => console.log('✅ Conectado ao MongoDB'))
+      .catch(err =>
+        console.error('❌ Erro ao conectar ao MongoDB:', err.message)
+      );
+  }
 
-    middlewares() {
-        this.server.use(express.json());
-        this.server.use(cors());
-    }
+  middlewares() {
+    this.server.use(express.json());
+    this.server.use(cors());
+  }
 
-    routes() {
-        this.server.use(routes);
-    }
+  routes() {
+    this.server.use(routes);
+  }
 }
 
 export default new App().server;
