@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ambiente
+.env
+.env.*.local
+
+# Diretorios de build ou dist
+dist/
+build/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# MacOS
+*.swp
+*~
+
+# Arquivos de cobertura de testes
+coverage/
+
+# Arquivos do Jest (ou outro runner)
+jest.cache/
+
+# Diretórios de lockfiles alternativos
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Banco de dados local (se você criar arquivos locais)
+data/
+*.db
+
+# Ferramentas de container
+**/docker-compose.override.yml
+**/docker-compose.*.yml
+
+# Outros artefatos
+*.log
