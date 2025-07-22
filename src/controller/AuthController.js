@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 class AuthController {
   async login(req, res) {
-      console.log("BODY recebido:", req.body);
+      //console.log("BODY recebido:", req.body);
     const { email, senha } = req.body;
 
     try {

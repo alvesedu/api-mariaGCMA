@@ -7,6 +7,7 @@ import AuthMiddleware from './middlweares/AuthMiddleware';
 import AuthMiddleware from './middlweares/AuthMiddleware'; 
 import AuthorQuestionnaireController from './controller/AuthorQuestionnaireController';
 import VictimQuestionnaireController from './controller/VictimQuestionnaireController';
+import reportsRouter from './routes/reports';
 
 
 //app.use(express.json());
@@ -42,6 +43,9 @@ routes.get('/vquestionnaires/:id', VictimQuestionnaireController.show);
 routes.post('/vquestionnaires', VictimQuestionnaireController.store);
 routes.put('/vquestionnaires/:id', VictimQuestionnaireController.update);
 routes.delete('/vquestionnaires/:id', VictimQuestionnaireController.delete);
+
+// Relatórios
+routes.use('/reports', reportsRouter);
 
 
 export default routes;
