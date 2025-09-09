@@ -8,6 +8,8 @@ import AuthMiddleware from './middlweares/AuthMiddleware';
 import AuthorQuestionnaireController from './controller/AuthorQuestionnaireController';
 import VictimQuestionnaireController from './controller/VictimQuestionnaireController';
 import reportsRouter from './routes/reports';
+import proMulherRoutes from './routes/promulher.js';
+import protegeMulherRoutes from './routes/protegeMulher.js';
 
 
 //app.use(express.json());
@@ -46,6 +48,12 @@ routes.delete('/vquestionnaires/:id', VictimQuestionnaireController.delete);
 
 // Relatórios
 routes.use('/reports', reportsRouter);
+
+//PróMulher
+routes.use('/promulher', proMulherRoutes);
+
+//Protege Mulher
+routes.use('/protege-mulher', protegeMulherRoutes);
 
 
 export default routes;
