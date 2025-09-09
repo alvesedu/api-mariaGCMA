@@ -14,6 +14,10 @@ async function authenticate(req, res, next) {
 
         if (adminUser && adminUser.role === 'admin') {
           req.user = adminUser;
+          // Adicionar dados para logs
+          req.userId = adminUser._id;
+          req.userName = adminUser.nome;
+          req.userRole = adminUser.role;
           return next();
         }
       }
@@ -40,6 +44,10 @@ async function authenticate(req, res, next) {
     }
 
     req.user = user;
+    // Adicionar dados para logs
+    req.userId = user._id;
+    req.userName = user.nome;
+    req.userRole = user.role;
     next();
   } catch (error) {
     console.error('Erro no authenticate middleware:', error);

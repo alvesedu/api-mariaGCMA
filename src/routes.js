@@ -4,13 +4,12 @@ import uploadConfig from './config/upload';
 import UserController from './controller/UserController';
 import AuthController from './controller/AuthController';
 import AuthMiddleware from './middlweares/AuthMiddleware'; 
-import AuthMiddleware from './middlweares/AuthMiddleware'; 
 import AuthorQuestionnaireController from './controller/AuthorQuestionnaireController';
 import VictimQuestionnaireController from './controller/VictimQuestionnaireController';
 import reportsRouter from './routes/reports';
 import proMulherRoutes from './routes/promulher.js';
 import protegeMulherRoutes from './routes/protegeMulher.js';
-
+import logRoutes from './routes/logRoutes.js';
 
 //app.use(express.json());
 const routes = new Router();
@@ -55,5 +54,7 @@ routes.use('/promulher', proMulherRoutes);
 //Protege Mulher
 routes.use('/protege-mulher', protegeMulherRoutes);
 
+// Rotas de Logs
+routes.use('/logs', logRoutes);
 
 export default routes;
